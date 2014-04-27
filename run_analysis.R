@@ -70,8 +70,8 @@ redacteddata <- total[,allcols]
 #Melt it, using the label columns as id variables
 molten <- melt(redacteddata,c(67:71))
 
-#Cast it, splitting by activity and subject and taking the mean
-output <- dcast(molten, activity ~ subject, mean)
+#Cast it, splitting by activity and subject per variable and taking the mean
+output <- dcast(molten, subject + activity ~ variable , mean)
 
 #Spit to text file
 write.table(output,"output.txt",sep="\t")

@@ -25,3 +25,12 @@ The files used are:
  * UCI HAR Dataset/activity_labels.txt
 
 ##Transformations
+Transformations applied are as follows:
+* Data joined together into one dataset
+* Data points ending in '-mean()' and '-std()' used (33 of each) - all others redacted
+* Data melted with melt()
+* Data cast with dcast(), cast by subject and activity per variable, taking the means
+
+##Output
+Output is a data frame with 180 observances (30 subjects * 6 activities) and 68 variables (mean and std for each of 33 variables, plus subject and activity labels)
+The values are the mean of the readings
