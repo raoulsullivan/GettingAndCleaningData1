@@ -17,9 +17,14 @@
 #We need the reshape2 library for the melt and dcast functions at the end
 library(reshape2)
 
+message("This will take a long time. Please be patient")
+
 #Load two main datasets
 train <- read.fwf('UCI HAR Dataset/train/X_train.txt',rep(16,561))
+message("Done train, now for test. Please continue to be patient")
 test <- read.fwf('UCI HAR Dataset/test/X_test.txt',rep(16,561))
+
+message("Reading of big files over, shouldn't be long now")
 
 #Load column names
 features <- readLines('UCI HAR Dataset/features.txt')
@@ -75,3 +80,6 @@ output <- dcast(molten, subject + activity ~ variable , mean)
 
 #Spit to text file
 write.table(output,"output.txt",sep="\t")
+
+message('All done')
+output
